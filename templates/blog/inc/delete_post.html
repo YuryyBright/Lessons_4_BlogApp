@@ -1,0 +1,44 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block header %}
+    <header class="masthead" style="background-image: url('{% static 'img/post-bg.jpg' %}')">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <div class="post-heading">
+                        <h1>{{ post.title }}</h1>
+                        <h2 class="subheading"> Some subtitle</h2>
+                        <span class="meta">Posted by
+              <a href="#">{{ post.author }}</a>
+              on August 24, 2019</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock %}
+
+{% block content %}
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <h1>Delete post</h1>
+                    <form action="" method="post">{% csrf_token %}
+                        <p>Are you sure you want to delete "{{ post.title }}"?</p>
+                        <input type="submit" value="Confirm" class="btn btn-secondary" style="float: right">
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </article>
+{% endblock %}
+
+{#{% block content %}#}
+{#    <div class="post-entry">#}
+{#        <h2>{{ post.title }}</h2>#}
+{#        <p> {{ post.body }} </p>#}
+{#    </div>#}
+{#{% endblock content %}#}

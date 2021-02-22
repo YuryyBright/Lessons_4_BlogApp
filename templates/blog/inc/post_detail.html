@@ -1,8 +1,44 @@
 {% extends 'blog/base.html' %}
+{% load static %}
+{% block header %}
+ <header class="masthead" style="background-image: url('{% static 'img/post-bg.jpg'%}')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>{{ post.title }}</h1>
+            <h2 class="subheading"> Some subtitle</h2>
+            <span class="meta">Posted by
+              <a href="#">{{ post.author }}</a>
+              on August 24, 2019</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+{% endblock %}
 
 {% block content %}
-    <div class="post-entry">
-        <h2>{{ post.title }}</h2>
-        <p> {{ post.bodys }} </p>
+<article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <p>{{ post.body }}</p>
+            <p>
+            <a href="{% url 'edit_post' post.pk %}" class="btn-link btn btn-dark">Update news</a>
+            <a href="{% url 'delete_post' post.pk %}" class="btn-link btn btn-danger">Delete news</a>
+</p>
+        </div>
+      </div>
     </div>
-{% endblock content %}
+
+  </article>
+{% endblock %}
+
+{#{% block content %}#}
+{#    <div class="post-entry">#}
+{#        <h2>{{ post.title }}</h2>#}
+{#        <p> {{ post.body }} </p>#}
+{#    </div>#}
+{#{% endblock content %}#}

@@ -1,0 +1,37 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{ {% block header %}
+    <header class="masthead" style="background-image: url('{% static 'img/enter.jpg' %}')">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <div class="post-heading">
+                        <h1>Welcome</h1>
+                        <h2 class="subheading">Enter your data</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock %}
+{% block content %}
+
+    <form method="post">
+        <div class="row">
+
+            <div class="col"></div>
+            <div class="col">
+                <h2>Log In</h2>
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Log In</button>
+            </div>
+            <div class="col"></div>
+
+        </div>
+    </form>
+
+
+
+{% endblock %}
